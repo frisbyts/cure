@@ -40,7 +40,7 @@ def format_data(clinical_spreadsheet,imaging_spreadsheet,salmon_data):
  
     #load salmon data
     #TCGA-BH-A28P not in salmon data
-    df_salmon = pickle.load( open("salmon_cancer.pkl", "rb") )
+    df_salmon = pickle.load( open(salmon_data, "rb") )
 
     surv5_salmon = label_mask(df_salmon,imaging_labels["Survive5"],"surv5_salmon_labels.pkl")
     dfree5_salmon = label_mask(df_salmon,imaging_labels["DiseaseFree5"],"dfree5_salmon_labels.pkl")
