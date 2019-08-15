@@ -1,4 +1,4 @@
-# cure
+# CURE code
 This code was written as part of the cure project to predict breast cancer survivorship in a subset of the 
 TCGA BRCA data set.  This document provides basic descriptions of the inputs and outputs of each script in this 
 repository. Some of these assume access to the pghbio data hosted on BRIDGES.
@@ -61,9 +61,25 @@ l = csl.OptimizedCost(classifier, primary_constraint, primary_constraint_thresho
 
 statistics, predictions, probabilities = l.find_best_weights(X,y)
 
-
-
 Inputs:
 
+1. classifier- a scikit-learn classifier (eg. RandomForestClassifier)
+
+2. primary_constraint-  The metric that you want your model to meet a speicific threshold.  Must be one of 'sensitivity', 'specificity', 'auc', 'f1', or 'matthews'.
+
+3. primary_constraint_threshold- The numeric threshold you want your model to attain for the primary_constraint.
+
+4. secondary_constraint- Given the model meets the primary constraint threshold, a second metric you would like the model to maximize. Must be one of 'sensitivity', 'specificity', 'auc', 'f1', or 'matthews'
+
+5. X- A data matrix
+
+6. y- labels 
+
 Outputs:
+
+1. statistics- A 4-tuple containing the secondary constraint, sensitivity, specificity, and accuracy of the model
+
+2. predictions- The predicted classifications.
+
+3. probabilities- The predicted class probabilities. 
 ########################################################################################
