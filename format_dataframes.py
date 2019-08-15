@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import re
 import pickle
+import sys
 
 def label_mask(df,labels,fname):
     mask = np.where(labels.values != "Unknown")[0]
@@ -46,3 +47,20 @@ def format_data(clinical_spreadsheet,imaging_spreadsheet,salmon_data):
     dfree5_salmon = label_mask(df_salmon,imaging_labels["DiseaseFree5"],"dfree5_salmon_labels.pkl")
     surv5_salmon.to_pickle("LOO_surv5_salmon.pkl")
     dfree5_salmon.to_pickle("LOO_dfree5_salmon.pkl")
+
+if __name__ == '__main__':
+    clinical_spreadsheet = sys.argv[1]
+    imaging_spreadsheet = sys.argv[2]
+    salmon_data = sys.argv[3]
+ 
+    format_data(clinical_spreadsheet,imaging_spreadsheet,salmon_data)
+
+
+
+
+
+
+
+
+
+
